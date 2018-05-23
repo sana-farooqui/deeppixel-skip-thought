@@ -11,7 +11,7 @@ usage() {
 MODELTYPE=$1
 TASK=$2
 
-if [[  $# -ne 2 || ${MODELTYPE} != "uni" || ${MODELTYPE} != "bi" || ${TASK} != "SKIP" || ${TASK} != "MSRP"  ]];
+if [[  $# -ne 2 || (${MODELTYPE} != uni && ${MODELTYPE} != "bi") || (${TASK} != "SKIP" && ${TASK} != "MSRP")  ]];
 	then
 		usage
 		exit 1
