@@ -1,7 +1,21 @@
 #!/usr/bin/env bash
 
+# Script modified from https://github.com/tensorflow/models/tree/master/research/skip_thoughts/README.md
+# USAGE:
+usage() {
+	echo "./eval.sh [MODEL-TYPE] [TASK]"
+	echo "MODEL-TYPE must be one of \"uni\" or \"bi\""
+	echo "TASK must be one of \"SKIP\" or \"MSRP\""
+	}
+
 MODELTYPE=$1
 TASK=$2
+
+if [[  $# -ne 2 || ${MODELTYPE} != "uni" || ${MODELTYPE} != "bi" || ${TASK} != "SKIP" || ${TASK} != "MSRP"  ]];
+	then
+		usage
+		exit 1
+fi
 
 # Path to project
 PROJECT_PATH="${HOME}/PycharmProjects/deeppixel-skip-thought/skip_thoughts"
@@ -33,4 +47,3 @@ bazel-bin/skip_thoughts/evaluate \
   --${MODELTYPE}_vocab_file=${VOCAB_FILE} \
   --${MODELTYPE}_embeddings_file=${EMBEDDINGS_FILE} \
   --${MODELTYPE}_checkpoint_path=${CHECKPOINT_PATH}
-
