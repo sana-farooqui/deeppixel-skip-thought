@@ -1,4 +1,4 @@
-**Results**
+**Results on BookCorpus embeddings**
 
 SICK, uni
 Test Pearson: 0.843789371599784
